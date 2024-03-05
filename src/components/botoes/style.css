@@ -1,0 +1,25 @@
+.button_box{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width:45%;
+}
+.buy{
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+}
+.buy:hover{
+    background-color: #2eb94f;
+}
+.sell{
+    background-color: #be0606;
+    border-radius: 8px;
+}
+.sell:hover{
+    background-color:red ;
+}
+a{
+    text-align: center;
+}
