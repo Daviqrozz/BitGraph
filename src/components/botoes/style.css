@@ -4,11 +4,13 @@
     flex-direction: column;
     justify-content: space-around;
     width:45%;
+
 }
 .buy{
     background-color: #28a745;
     color: white;
     border-radius: 8px;
+    margin-bottom: 0.1em;
 }
 .buy:hover{
     background-color: #2eb94f;
@@ -16,6 +18,7 @@
 .sell{
     background-color: #be0606;
     border-radius: 8px;
+    margin-top: 0.1em;
 }
 .sell:hover{
     background-color:red ;

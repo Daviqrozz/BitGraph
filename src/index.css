@@ -56,3 +56,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.tradingview-widget-container{
+  margin: auto;
+  width: 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
