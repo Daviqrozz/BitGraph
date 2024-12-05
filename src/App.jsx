@@ -1,4 +1,3 @@
-
 import Header from './components/cabeçalho/header'
 import Valor from './components/valor/valor'
 import Buttons from './components/botoes/index'
@@ -9,7 +8,6 @@ function App() {
   return (
     <div>
             <Header/>
-            <TradingViewWidget />
             <Valor/>
             <Buttons/>
     </div>
