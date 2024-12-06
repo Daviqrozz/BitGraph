@@ -4,7 +4,6 @@ function TradingViewWidget() {
   const container = useRef();
 
   useEffect(() => {
-    // Limpa o container antes de adicionar um novo script
     container.current.innerHTML = "";
 
     const script = document.createElement("script");

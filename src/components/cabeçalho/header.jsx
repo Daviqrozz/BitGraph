@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './header.css';
+import { MyContext } from '../../Context';
+
 
 function Header() {
+    const {setValue} = useContext(MyContext)
     return (
         <div className="header_box">
             <div>
@@ -10,22 +13,24 @@ function Header() {
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                 </svg></a>
             </div>
+
             <div>
                 <h1>BitGraph</h1>
                 <span>Valor das criptomoedas em tempo real</span>
             </div>
             <div>
+
                 <label class="theme-selector-label">
                     Moeda:
-                    <select class="theme-selector" oninput="activateTheme(this.value)">
-                        <option value="auto" selected="">Auto</option>
-                        <option value="light">Dolar</option>
-                        <option value="dark">Reak</option>
+                    <select class="theme-selector" onChange={(e) => setValue(e.target.value)}>
+                        <option value="BRL" selected="">Auto</option>
+                        <option value="USDT">Dolar</option>
+                        <option value="BRL">Real</option>
                     </select>
                 </label>
             </div>
-        </div>
 
+        </div>
     )
 }
 export default Header

@@ -8,6 +8,7 @@ function App() {
   return (
     <div>
             <Header/>
+            <TradingViewWidget />
             <Valor/>
             <Buttons/>
     </div>
