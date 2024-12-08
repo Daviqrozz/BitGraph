@@ -24,9 +24,9 @@ function Header() {
                     Moeda:
                     <select class="theme-selector" onChange={(e) => setValue(e.target.value)}>
                         <option value="USDT" selected="">Auto</option>
-                        <option value="USDT">Dolar</option>
-                        <option value="BRL">Real</option>
-                    </select>
+                        <option value="USDT">Dolar / $</option>
+                        <option value="BRL">Real / R$</option>
+                    </select> 
                 </label>
             </div>
 

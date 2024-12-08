@@ -8,13 +8,11 @@ function Valor(){
   const [preco, setPreco] = useState(null);
   const {value} = useContext(MyContext);
   
-  console.log(value)
 
   useEffect(() => {
     const fetchPreco = async () => {
       try {
         const response = await api.get(`/api/v3/ticker/price?symbol=BTC${value}`);
-        
         const precoFLoat= parseFloat(response.data.price)
         setPreco(precoFLoat);
       } catch (error) {
@@ -23,15 +21,17 @@ function Valor(){
     };
     const interval = setInterval(() => {
       fetchPreco();
-    }, 2500);
+    }, 1000);
  
     return () => clearInterval(interval);
-  }, []);
+  }, [value]);
+
+  const moeda = value === 'BRL' ? 'R$' : '$'
 
   return (
     <div className='valor_box'>
       {preco ? (
-        <h3>Preço do BTC: {preco}$</h3>
+        <h3>Preço do BTC: {preco} {moeda}</h3>
       ) : (
         <p>Carregando...</p>
       )}
