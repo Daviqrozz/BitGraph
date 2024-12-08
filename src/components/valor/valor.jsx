@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './valor.css'
 import api from './api'
+import { MyContext } from '../../Context';
 
 function Valor(){
 
   const [preco, setPreco] = useState(null);
   const {value} = useContext(MyContext);
+  
+  console.log(value)
 
   useEffect(() => {
     const fetchPreco = async () => {
