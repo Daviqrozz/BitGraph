@@ -1,10 +1,19 @@
 import React, { useContext } from 'react';
 import './header.css';
 import { MyContext } from '../../Context';
+import Select from 'react-select'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const options = [
+  { value: 'BRL', label: 'Real' },
+  { value: 'USDT', label: 'Dolar' },
+  { value: 'EUR', label: 'Euro' }
+]
 
 function Header() {
+
     const {setValue} = useContext(MyContext)
+    
     return (
         <div className="header_box">
             <div>
@@ -18,16 +27,15 @@ function Header() {
                 <h1>BitGraph</h1>
                 <span>Valor das criptomoedas em tempo real</span>
             </div>
-            <div>
 
-                <label class="theme-selector-label">
-                    Moeda:
-                    <select class="theme-selector" onChange={(e) => setValue(e.target.value)}>
-                        <option value="USDT" selected="">Auto</option>
-                        <option value="USDT">Dolar / $</option>
-                        <option value="BRL">Real / R$</option>
-                    </select> 
-                </label>
+            <div>
+                <p>Moeda:</p>
+                <Select
+                options={options}
+                onChange={(selectedOption) => setValue(selectedOption.value)}
+                placeholder="Selecione..."
+                defaultValue={options[0]}
+                />
             </div>
 
         </div>
