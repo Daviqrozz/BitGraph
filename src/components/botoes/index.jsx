@@ -1,4 +1,6 @@
 import './style.css'
+
+
 function Buttons(){
     return(
         <div className='button_box'>

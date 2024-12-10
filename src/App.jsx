@@ -2,15 +2,18 @@ import Header from './components/cabeçalho/header'
 import Valor from './components/valor/valor'
 import Buttons from './components/botoes/index'
 import TradingViewWidget from './components/graph/graph'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
-    <div>
+    <div className='bg-black text-white'>
             <Header/>
-            <TradingViewWidget />
-            <Valor/>
-            <Buttons/>
+              <TradingViewWidget />
+              <Valor/>
+              <Buttons/>
+          
+            
     </div>
   )
 }

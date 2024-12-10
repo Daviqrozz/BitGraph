@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, memo } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TradingViewWidget() {
   const container = useRef();
@@ -18,8 +19,8 @@ function TradingViewWidget() {
             ]
           ],
           "chartOnly": false,
-          "width": "50%",
-          "height": "500",
+          "width": "45%",
+          "height": "575",
           "locale": "br",
           "colorTheme": "dark",
           "autosize": false,
@@ -55,9 +56,10 @@ function TradingViewWidget() {
   }, []);
 
   return (
-    <div className="tradingview-widget-container" ref={container}>
-      <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
+    <div className="bg-black">
+      <div className="tradingview-widget-container" ref={container}>
+        <div className="tradingview-widget-container__widget"></div>
+        <div className="tradingview-widget-copyright"></div>
       </div>
     </div>
   );
