@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const options = [
   { value: 'BRL', label: 'Real / R$' },
-  { value: 'USDT', label: 'Dolar / $' },
+  { value: 'USD', label: 'Dolar / $' },
   { value: 'EUR', label: 'Euro / €' }
 ]
 

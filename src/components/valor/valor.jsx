@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './valor.css'
 import api from './api'
 import { MyContext } from '../../Context';
+
 function Valor(){
 
   const [preco, setPreco] = useState(null);
@@ -25,7 +26,7 @@ function Valor(){
     return () => clearInterval(interval);
   }, [value]);
   
-    const moeda = value === 'BRL' ? 'R$' : '$'
+    const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$'
 
   return (
     <div className='valor_box'>

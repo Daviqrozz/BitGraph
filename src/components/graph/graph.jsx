@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MyContext } from '../../Context';
+
+
 
 function TradingViewWidget() {
   const container = useRef();
-
+  const {value} = useContext(MyContext);  
   useEffect(() => {
     container.current.innerHTML = "";
 
@@ -15,7 +18,7 @@ function TradingViewWidget() {
         {
           "symbols": [
             [
-              "BINANCE:BTCUSD|1M"
+              "BINANCE:BTC${value}|1M"
             ]
           ],
           "chartOnly": false,
@@ -53,7 +56,7 @@ function TradingViewWidget() {
           ]
         }`;
     container.current.appendChild(script);
-  }, []);
+  }, [value]);
 
   return (
     <div className="bg-black">
