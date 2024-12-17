@@ -1,20 +1,17 @@
-import Header from './components/cabeçalho/header'
-import Valor from './components/valor/valor'
-import Buttons from './components/botoes/index'
-import TradingViewWidget from './components/graph/graph'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/home';
+import Btc from './pages/btc';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 function App() {
   return (
-    <div className='bg-black text-white'>
-            <Header/>
-              <TradingViewWidget />
-              <Valor/>
-              <Buttons/>
-          
-            
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/principal" element={<Btc />} />
+      </Routes>
+    </Router>
   )
 }
 

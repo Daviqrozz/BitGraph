@@ -59,7 +59,7 @@ function Header() {
 
             <div>
                 <h1>₿itGraph</h1>
-                <span>Valor das criptomoedas em tempo real</span>
+                <span>Valores das criptomoedas em tempo real</span>
             </div>
 
             <div className='text-center'>
