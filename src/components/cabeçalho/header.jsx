@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import './header.css';
+import Side from './sidebar'
 import { MyContext } from '../../Context';
 import Select from 'react-select'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './header.css';
 
 const options = [
   { value: 'BRL', label: 'Real / R$' },
@@ -49,12 +51,10 @@ function Header() {
     
     return (
 
-        <div className="header bg-grey d-flex justify-content-between text-white text-center ">
-            <div className='center d-flex justify-content-center align-items-center'>
-                <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="45" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                </svg></a>
+        <div className="header bg-grey d-flex justify-content-between text-white text-center">
+          
+            <div className='d-flex justify-content-center align-items-center'>
+               <Side /> 
             </div>
 
             <div>

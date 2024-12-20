@@ -13,6 +13,8 @@
     "apexcharts": "^3.45.2",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.8.5",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",
