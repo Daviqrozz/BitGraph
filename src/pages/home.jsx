@@ -8,9 +8,9 @@ function Home() {
     <div>
         <Header />
     <div className="bg-black text-white vh-100 d-flex flex-column justify-content-center align-items-center"> 
-      <h1>Bem-vindo à Home</h1>
+      <h1>Acompanhe suas criptomoedas</h1>
       <Link to="/principal" className="btn btn-primary mt-3">
-        Acessar Página Principal
+        Acesse suas moedas
       </Link>
         </div>
     </div>

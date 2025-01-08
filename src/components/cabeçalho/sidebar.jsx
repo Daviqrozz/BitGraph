@@ -34,7 +34,7 @@ export default function Side() {
                         <ul style={{ listStyleType: 'none', padding: 0 }}>
 
                             <li style={{ marginBottom: '5px',marginTop:35 }}>
-                                <Button label="Home"
+                                <Button label="ㅤHome"
                                     icon="pi pi-home"
                                     onClick={() => window.location.href = '/'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
@@ -42,7 +42,7 @@ export default function Side() {
 
                             <hr />
                             <li style={{ marginBottom: '5px' }}>
-                                <Button label="About"
+                                <Button label="ㅤAbout"
                                     icon="pi pi-bitcoin"
                                     onClick={() => window.location.href = '/coins'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
@@ -50,7 +50,7 @@ export default function Side() {
 
                             <hr />
                             <li style={{ marginBottom: '5px' }}>
-                                <Button label="Contact"
+                                <Button label="ㅤContact"
                                     icon="pi pi-search"
                                     onClick={() => window.location.href = '/contact'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
