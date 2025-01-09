@@ -9,7 +9,7 @@ import 'primeicons/primeicons.css';
 import './header.css';
 
 export default function Side() {
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     return (
         <div className='Header d-flex justify-content-between align-items-center' style={{ height: '100vh' }}>
@@ -42,7 +42,7 @@ export default function Side() {
 
                             <hr />
                             <li style={{ marginBottom: '5px' }}>
-                                <Button label="ㅤAbout"
+                                <Button label="ㅤMoedas"
                                     icon="pi pi-bitcoin"
                                     onClick={() => window.location.href = '/coins'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
@@ -50,7 +50,7 @@ export default function Side() {
 
                             <hr />
                             <li style={{ marginBottom: '5px' }}>
-                                <Button label="ㅤContact"
+                                <Button label="ㅤEm breve"
                                     icon="pi pi-search"
                                     onClick={() => window.location.href = '/contact'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
