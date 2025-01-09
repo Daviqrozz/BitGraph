@@ -1,13 +1,13 @@
 <h1>BitGraph</h1>
-<p>Este é um simples aplicativo que mostra o valor atual do Bitcoin (BTC) usando uma API inspirada na Binance.</p>
-<p>Sujeito a adição de futuras criptomoedas.</p>
+<p>Este é um simples aplicativo que mostra o valor atual de varias criptomoedas usando uma API baseada na Binance.</p>
 
   <h2>Funcionalidades</h2>
   <ul>
-      <li>Exibe o preço atual do Bitcoin em tempo real.</li>
+      <li>Exibe o preço atual das criptomoedas em tempo real.</li>
       <li>Atualiza automaticamente o preço a cada intervalo de tempo definido.</li>
       <li>Indica a alteraçao do valor da moeda durante o dia.</li>
-      <li>Layout simplificado para melhor entendimento do usuario.</li>
+      <li>Layout simplificado para melhor entendimento do usuario leigo
+        .</li>
   </ul>
 
   <h2>Instalação</h2>
