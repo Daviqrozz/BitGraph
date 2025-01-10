@@ -36,7 +36,7 @@ const customStyles = {
       backgroundColor: state.isFocused ? '#333' : '#000', // Destaque nas opções ao focar
       color: '#fff', // Cor do texto das opções
       '&:active': {
-        backgroundColor: '#F2A900', // Fundo ao clicar
+        backgroundColor: '#0288d1', // Fundo ao clicar
       },
     }),
     placeholder: (provided) => ({

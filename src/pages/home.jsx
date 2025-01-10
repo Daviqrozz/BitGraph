@@ -13,7 +13,7 @@ function Home() {
       <h1>Acompanhe suas criptomoedas</h1>
       <List />
       <Link to="/principal" className="btn btn-primary mt-3">
-        Acesse suas moedas
+        Acesse outras moedas
       </Link>
         </div>
     </div>
