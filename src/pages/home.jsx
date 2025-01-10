@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../components/cabeçalho/header'
 import List from '../components/cryptolist/cryptolist'
 
-
 import { Link } from 'react-router-dom';
 
 function Home() {

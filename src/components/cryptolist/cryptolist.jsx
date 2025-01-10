@@ -2,15 +2,16 @@ import { useState } from 'react';
 
 export default function CryptoList() {
     const [cryptos] = useState([
-        { id: 0, name: 'Bitcoin', image: 'bitcoin.png', value: '$27,000' },
+        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', value: '$27,000' },
         { id: 1, name: 'Ethereum', image: 'ethereum.png', value: '$1,800' },
-        { id: 2, name: 'Ripple', image: 'ripple.png', value: '$0.52' },
+        { id: 2, name: 'BNB', image: 'bnb.png', value: '$0.52' },
         { id: 3, name: 'Cardano', image: 'cardano.png', value: '$0.28' }
     ]);
 
     return (
-        <div className="card flex md:justify-content-center">
-            <ul className="bg-dark text-white m-0 p-0 list-unstyled border-1 surface-border border-round p-3 flex flex-column gap-3 w-full md:w-60rem">
+        <div className="card flex md:justify-content-center" style={{ width: '100%', maxWidth: '30%' }}>
+            <ul className="bg-dark text-white m-0 p-0 list-unstyled border-1 surface-border border-round p-3 flex flex-column gap-3 w-full" 
+                style={{ width: '100%', maxWidth: '1000px' }}>
                 {cryptos.map((crypto) => (
                     <li
                         key={crypto.id}
@@ -22,21 +23,20 @@ export default function CryptoList() {
                             width: '100%'
                         }}
                     >
-                       
-                        <div className="flex align-items-center gap-2" style={{ justifyContent: 'flex-start' }}>
+                        <div className="flex align-items-center gap-3" style={{ justifyContent: 'flex-start' }}>
                             <img
-                                alt={crypto.name}
-                                src={`https://primefaces.org/cdn/primereact/images/avatar/${crypto.image}`}
-                                style={{ width: '32px', height: '32px' }}
+                                 alt={crypto.name}
+                                 src={`/CryptoIcons/${crypto.image}`}
+                                 style={{ width: '32px', height: '32px' }}
                             />
                             <span className="font-bold">{crypto.name}</span>
                         </div>
-
-
+                        
                         <span className="font-bold" style={{ justifySelf: 'flex-end' }}>
                             {crypto.value}
                         </span>
                     </li>
+                    
                 ))}
             </ul>
         </div>
