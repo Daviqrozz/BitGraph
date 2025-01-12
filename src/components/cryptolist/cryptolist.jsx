@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Valor from '../valor/valor';
 
 
-export default function CryptoList() {
+export default function TopCryptoList() {
     const [cryptos] = useState([
         { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', value: <Valor />, dynamicValue: true },
         { id: 1, name: 'Ethereum', image: 'ethereum.png', value: '$1,800' },
@@ -10,18 +10,7 @@ export default function CryptoList() {
         { id: 3, name: 'Cardano', image: 'cardano.png', value: '$0.28' }
     ]);
 
-    const formatValue = (value) => {
-        if (typeof value === 'string') {
-            return value;
-        }
-
-        
-        return (
-            <span style={{ fontWeight: 'bold', color: '#4CAF50' }}>
-                {value}
-            </span>
-        );
-    };
+;
 
     return (
         <div className="card flex md:justify-content-center" style={{ width: '100%', maxWidth: '30%' }}>
@@ -50,7 +39,7 @@ export default function CryptoList() {
                         </div>
 
                         <span className="font-bold" style={{ justifySelf: 'flex-end' }}>
-                            {formatValue(crypto.value)}
+                            {(crypto.value)}
                         </span>
                     </li>
                 ))}
