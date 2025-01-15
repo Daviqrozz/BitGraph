@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import Valor from '../valor/valor';
 
-
-export default function TopCryptoList() {
-
+export default function CryptoList() {
     const [cryptos] = useState([
-        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', value: <Valor/>, },
-        { id: 1, name: 'Ethereum', image: 'ethereum.png', value: <Valor /> },
-        { id: 2, name: 'BNB', image: 'bnb.png', value: <Valor /> },
-        { id: 3, name: 'Cardano', image: 'cardano.png', value: <Valor /> }
-
+        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', symbol: 'BTC',to:'' },
+        { id: 1, name: 'Ethereum', image: 'ethereum.png', symbol: 'ETH',to:'' },
+        { id: 2, name: 'BNB', image: 'bnb.png', symbol: 'BNB',to:'' },
+        { id: 3, name: 'Cardano', image: 'cardano.png', symbol: 'ADA',to:'' },
     ]);
-
-;
 
     return (
         <div className="card flex md:justify-content-center" style={{ width: '100%', maxWidth: '30%' }}>
@@ -28,7 +23,7 @@ export default function TopCryptoList() {
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
-                            width: '100%'
+                            width: '100%',
                         }}
                     >
                         <div className="flex align-items-center gap-3" style={{ justifyContent: 'flex-start' }}>
@@ -39,8 +34,9 @@ export default function TopCryptoList() {
                             />
                             <span className="font-bold">{crypto.name}</span>
                         </div>
+
                         <span className="font-bold" style={{ justifySelf: 'flex-end' }}>
-                            {(crypto.value)}
+                            <Valor symbol={crypto.symbol} />
                         </span>
                     </li>
                 ))}

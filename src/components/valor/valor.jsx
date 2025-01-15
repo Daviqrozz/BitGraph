@@ -3,37 +3,35 @@ import './valor.css';
 import api from './api';
 import { MyContext } from '../../Context';
 
-function Valor() {
+function Valor({ symbol }) {
     const [preco, setPreco] = useState(null);
     const { value } = useContext(MyContext);
-
-
-    console.log(value);
 
     useEffect(() => {
         const fetchPreco = async () => {
             try {
-                const response = await api.get(`/api/v3/ticker/price?symbol=BTC${value}`);
+                const response = await api.get(`/api/v3/ticker/price?symbol=${symbol}${value}`);
                 const precoFloat = parseFloat(response.data.price);
                 setPreco(precoFloat);
             } catch (error) {
                 console.error('Ops! Ocorreu um erro: ' + error);
             }
         };
+
+        fetchPreco();
         const interval = setInterval(() => {
             fetchPreco();
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [value]);
+    }, [symbol, value]);
 
     const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
 
-    
     const formatarPreco = (preco) => {
         return new Intl.NumberFormat('en-US', {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1,
         }).format(preco);
     };
 
@@ -41,7 +39,7 @@ function Valor() {
         <div className="valor_box">
             {preco ? (
                 <span>
-                  {moeda}
+                    {moeda}
                     {formatarPreco(preco)}
                 </span>
             ) : (

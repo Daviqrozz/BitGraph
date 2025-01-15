@@ -11,7 +11,6 @@ function Btc() {
     <div className='bg-black text-white'>
             <Header/>
               <TradingViewWidget />
-              <Valor/>
               <Buttons/>
     </div>
   )
