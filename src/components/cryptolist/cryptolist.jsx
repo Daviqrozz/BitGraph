@@ -3,11 +3,13 @@ import Valor from '../valor/valor';
 
 
 export default function TopCryptoList() {
+
     const [cryptos] = useState([
-        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', value: <Valor />, dynamicValue: true },
-        { id: 1, name: 'Ethereum', image: 'ethereum.png', value: '$1,800' },
-        { id: 2, name: 'BNB', image: 'bnb.png', value: '$0.52' },
-        { id: 3, name: 'Cardano', image: 'cardano.png', value: '$0.28' }
+        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', value: <Valor/>, },
+        { id: 1, name: 'Ethereum', image: 'ethereum.png', value: <Valor /> },
+        { id: 2, name: 'BNB', image: 'bnb.png', value: <Valor /> },
+        { id: 3, name: 'Cardano', image: 'cardano.png', value: <Valor /> }
+
     ]);
 
 ;
@@ -37,7 +39,6 @@ export default function TopCryptoList() {
                             />
                             <span className="font-bold">{crypto.name}</span>
                         </div>
-
                         <span className="font-bold" style={{ justifySelf: 'flex-end' }}>
                             {(crypto.value)}
                         </span>

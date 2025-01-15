@@ -6,6 +6,8 @@ import { MyContext } from '../../Context';
 function Valor() {
     const [preco, setPreco] = useState(null);
     const { value } = useContext(MyContext);
+
+
     console.log(value);
 
     useEffect(() => {
@@ -20,7 +22,7 @@ function Valor() {
         };
         const interval = setInterval(() => {
             fetchPreco();
-        }, 1000);
+        }, 5000);
 
         return () => clearInterval(interval);
     }, [value]);
