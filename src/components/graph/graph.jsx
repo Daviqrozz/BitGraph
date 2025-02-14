@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { MyContext } from '../../Context';
 
-function TradingViewWidget() {
+function TradingViewWidget({symbol}) {
   const container = useRef();
   const {value} = useContext(MyContext);  
   useEffect(() => {

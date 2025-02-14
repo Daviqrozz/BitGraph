@@ -1,30 +1,35 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './valor.css';
-import api from './api';
 import { MyContext } from '../../Context';
+import { connectWebSocket } from './api';
 
 function Valor({ symbol }) {
     const [preco, setPreco] = useState(null);
     const { value } = useContext(MyContext);
 
+ 
+    const fetchPreco = async () => {
+        try {
+            const response = await api.get(`/api/v3/ticker/price?symbol=${symbol}${value}`);
+            const precoFloat = parseFloat(response.data.price);
+            setPreco(precoFloat);
+        } catch (error) {
+            console.error('Ops! Ocorreu um erro: ' + error);
+        }
+    };
+
     useEffect(() => {
-        const fetchPreco = async () => {
-            try {
-                const response = await api.get(`/api/v3/ticker/price?symbol=${symbol}${value}`);
-                const precoFloat = parseFloat(response.data.price);
-                setPreco(precoFloat);
-            } catch (error) {
-                console.error('Ops! Ocorreu um erro: ' + error);
-            }
-        };
-
         fetchPreco();
-        const interval = setInterval(() => {
-            fetchPreco();
-        }, 5000);
 
-        return () => clearInterval(interval);
+        const ws = connectWebSocket(symbol, (data) => {
+            const precoAtual = parseFloat(data.p); 
+            setPreco(precoAtual);
+        });
+        return () => {
+            ws.close();
+        };
     }, [symbol, value]);
+
 
     const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
 
