@@ -7,7 +7,7 @@ function Valor({ symbol }) {
     const [preco, setPreco] = useState(null);
     const { value } = useContext(MyContext);
 
- 
+    //Função para buscar o preço inicial da moeda via api response
     const fetchPreco = async () => {
         try {
             const response = await api.get(`/api/v3/ticker/price?symbol=${symbol}${value}`);
@@ -17,8 +17,9 @@ function Valor({ symbol }) {
             console.error('Ops! Ocorreu um erro: ' + error);
         }
     };
-
+    //Função para atualizar preço da moeda via WebSocket
     useEffect(() => {
+      
         fetchPreco();
 
         const ws = connectWebSocket(symbol, (data) => {
@@ -32,7 +33,7 @@ function Valor({ symbol }) {
 
 
     const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
-
+    
     const formatarPreco = (preco) => {
         return new Intl.NumberFormat('en-US', {
             minimumFractionDigits: 1,
