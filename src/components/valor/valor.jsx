@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './valor.css';
 import { MyContext } from '../../Context';
+import api from './api'
 import { connectWebSocket } from './api';
 
 function Valor({ symbol }) {
@@ -19,11 +20,11 @@ function Valor({ symbol }) {
     };
     //Função para atualizar preço da moeda via WebSocket
     useEffect(() => {
-      
+
         fetchPreco();
 
-        const ws = connectWebSocket(symbol, (data) => {
-            const precoAtual = parseFloat(data.p); 
+        const ws = connectWebSocket(symbol, value, (data) => {
+            const precoAtual = parseFloat(data.p);
             setPreco(precoAtual);
         });
         return () => {
@@ -33,7 +34,7 @@ function Valor({ symbol }) {
 
 
     const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
-    
+
     const formatarPreco = (preco) => {
         return new Intl.NumberFormat('en-US', {
             minimumFractionDigits: 1,

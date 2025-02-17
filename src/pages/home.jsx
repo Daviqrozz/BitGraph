@@ -10,7 +10,7 @@ function Home() {
     <div>
         <Header />
     <div className="bg-black text-white vh-100 d-flex flex-column justify-content-center align-items-center"> 
-      <h1>Acompanhe suas criptomoedas</h1>
+      <h1 className='text-center'>Acompanhe suas criptomoedas</h1>
       <TopCryptoList />
       <Link to="/principal" className="btn btn-primary mt-3">
         Acesse outras moedas
