@@ -8,12 +8,11 @@ export default api
 
 export const connectWebSocket = (symbol, value, onMessage) => {
   const exchange = value === 'BRL' ? 'brl' : value === 'EUR' ? 'eur' : 'usdt';
-  //Configurar filtro de moeda e cambio do web socket
-  const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}${exchange}@trade`)
+  const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol.toLowerCase()}${exchange}@trade`)
   //Logs do WebSocket
   ws.onopen = () => {
     console.log('Conexão WebSocket aberta!');
-    console.log('Moeda:', symbol)
+    console.log('Moeda:', symbol.toLowerCase())
     console.log('Câmbio:', exchange)
   };
 
