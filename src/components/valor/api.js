@@ -12,8 +12,8 @@ export const connectWebSocket = (symbol, value, onMessage) => {
   //Logs do WebSocket
   ws.onopen = () => {
     console.log('Conexão WebSocket aberta!');
-    console.log('Moeda:', symbol.toLowerCase())
-    console.log('Câmbio:', exchange)
+    //console.log('Moeda:', symbol.toLowerCase())
+    //console.log('Câmbio:', exchange)
   };
 
   ws.onmessage = (event) => {
@@ -26,7 +26,7 @@ export const connectWebSocket = (symbol, value, onMessage) => {
   };
 
   ws.onerror = (error) => {
-    console.error('Erro no WebSocket:', error);
+    //console.error('Erro no WebSocket:', error);
   };
 
   return ws;

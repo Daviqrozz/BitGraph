@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './header.css';
 
 const options = [
-  { value: 'BRL', label: 'Real / R$' },
-  { value: 'USD', label: 'Dolar / $' },
-  { value: 'EUR', label: 'Euro / €' }
+  { value: 'BRL', label: 'R$' },
+  { value: 'USD', label: '$' },
+  { value: 'EUR', label: '€' }
 ]
 
 const customStyles = {
@@ -62,8 +62,7 @@ function Header() {
         <span>Valores das criptomoedas em tempo real</span>
       </div>
 
-      <div className='text-center'>
-        <p>Câmbio:</p>
+      <div className=' d-flex justify-content-center align-items-center text-center'>
         <Select
           options={options}
           styles={customStyles}

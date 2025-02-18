@@ -14,8 +14,8 @@ function Home() {
       setTimeout(() => {
         setIndexFrase((prevIndex) => (prevIndex + 1) % frases.length);
         setVisivel(true);
-      }, 800);
-    }, 3000);
+      }, 900);
+    }, 4000);
 
     return () => clearInterval(intervalo);
   }, []);
@@ -33,7 +33,7 @@ function Home() {
         </Link>
       </div>
 
-      {/* Estilos CSS para animação */}
+    
       <style>
         {`
           .fade-in {

@@ -3,12 +3,12 @@ import Header from '../components/cabeçalho/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function Btc() {
+function Coin() {
   return (
-    <div className='bg-black text-white'>
+    <div className='bg-black text-white vh-100'>
             <Header/>
             <Cryptolist/>
     </div>
   )
 }
-export default Btc
+export default Coin
