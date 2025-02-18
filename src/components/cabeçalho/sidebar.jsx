@@ -44,7 +44,7 @@ export default function Side() {
                             <li style={{ marginBottom: '5px' }}>
                                 <Button label="ㅤMoedas"
                                     icon="pi pi-bitcoin"
-                                    onClick={() => window.location.href = '/coins'}
+                                    onClick={() => window.location.href = '/principal'}
                                     style={{ backgroundColor: 'transparent', border: 'black', color: 'white' }} />
                             </li>
 

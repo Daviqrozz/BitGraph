@@ -63,7 +63,7 @@ function Header() {
       </div>
 
       <div className='text-center'>
-        <p>Moeda:</p>
+        <p>Câmbio:</p>
         <Select
           options={options}
           styles={customStyles}

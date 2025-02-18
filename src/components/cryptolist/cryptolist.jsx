@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CryptoList = () => {
+ const CryptoList = () => {
     return (
-        <div>
-            Hello, World!
-        </div>
+        <div className=''>
+            <p className='text-center'>Aqui vai uma lista com as criptomoedas</p>
+          </div>
     );
 };
 
