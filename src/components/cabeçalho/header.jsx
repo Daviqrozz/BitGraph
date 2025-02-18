@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Side from './sidebar'
-import { MyContext } from '../../Context';
+import { MyContext } from '../../hooks/Context';
 import Select from 'react-select'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -53,7 +53,7 @@ function Header() {
 
     <div className="header bg-grey d-flex justify-content-between text-white text-center">
 
-      <div className='d-flex justify-content-center align-items-center'>
+      <div className=' d-flex justify-content-center align-items-center'>
         <Side />
       </div>
 

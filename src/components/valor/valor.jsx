@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './valor.css';
-import { MyContext } from '../../Context';
+import { MyContext } from '../../hooks/Context';
 import api from './api'
 import { connectWebSocket } from './api';
 
@@ -36,7 +36,7 @@ function Valor({ symbol }) {
     const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
 
     const formatarPreco = (preco) => {
-        return new Intl.NumberFormat('en-US', {
+        return new Intl.NumberFormat('pt-BR', {
             minimumFractionDigits: 1,
             maximumFractionDigits: 1,
         }).format(preco);

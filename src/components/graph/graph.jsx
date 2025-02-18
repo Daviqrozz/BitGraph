@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, memo, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { MyContext } from '../../Context';
+import { MyContext } from '../../hooks/Context';
 
-function TradingViewWidget({symbol}) {
+function TradingViewWidget() {
   const container = useRef();
   const {value} = useContext(MyContext);  
   useEffect(() => {

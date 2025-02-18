@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/cabeçalho/header'
-import TopCryptoList from '../components/cryptolist/cryptolist'
+import TopCryptoList from '../components/cryptolist/topcryptolist'
 
 
 import { Link } from 'react-router-dom';

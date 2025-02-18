@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
+import './header.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
@@ -14,8 +15,7 @@ export default function Side() {
     return (
         <div className='Header d-flex justify-content-between align-items-center' style={{ height: '100vh' }}>
             <div className="d-flex align-items-center">
-
-                <Button onClick={() => setVisible(true)} className="p-button-text">
+                <Button onClick={() => setVisible(true)} className="p-button-text" style={{ boxShadow: 'none' }}>
                     <svg style={{ visibility: visible ? 'hidden' : 'visible' }} xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-list" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                     </svg>
