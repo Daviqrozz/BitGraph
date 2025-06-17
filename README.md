@@ -19,7 +19,7 @@
       <li>Instale as dependências:
           <code>npm install</code></li>
       <li>Inicie o aplicativo:
-          <code>npm start</code></li>
+          <code>npm  run dev</code></li>
       <li>Acesse o aplicativo em seu navegador em <a href="http://localhost:3000">http://localhost:3000</a>.</li>
   </ol>
 
