@@ -11,9 +11,9 @@
   </ul>
 
   <h2>Instalação</h2>
-  <ol>
+  <ol>https://github.com/Daviqrozz/BitGraph
       <li>Clone o repositório do GitHub:
-          <code>git clone https://github.com/seu-usuario/bitcoin-price-viewer.git</code></li>
+          <code>git clone https://github.com/Daviqrozz/BitGraph</code></li>
       <li>Navegue até o diretório do projeto:
           <code>cd BitGraph</code></li>
       <li>Instale as dependências:
