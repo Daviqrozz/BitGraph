@@ -1,14 +1,15 @@
 import Cryptolist from '../components/cryptolist/cryptolist';
 import Header from '../components/cabeçalho/header';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 function Coin() {
   return (
-    <div className='bg-black text-white vh-100'>
-            <Header/>
-            <Cryptolist/>
+    <div className="page-wrapper">
+      <Header />
+      <div className="coins-page">
+        <Cryptolist />
+      </div>
     </div>
-  )
+  );
 }
-export default Coin
+
+export default Coin;

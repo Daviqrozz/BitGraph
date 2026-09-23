@@ -1,78 +1,107 @@
-import React, { useContext } from 'react';
-import Side from './sidebar'
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import Side from './sidebar';
 import { MyContext } from '../../hooks/Context';
-import Select from 'react-select'
+import { Link } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './header.css';
-
-const options = [
-  { value: 'BRL', label: 'R$' },
-  { value: 'USD', label: '$' },
-  { value: 'EUR', label: '€' }
-]
-
-const customStyles = {
-  control: (provided) => ({
-    ...provided,
-    backgroundColor: '#000', // Cor de fundo preta
-    borderColor: '#333', // Cor da borda
-    color: '#000', // Cor do texto
-    boxShadow: 'none',
-    '&:hover': {
-      borderColor: '#555', // Borda ao passar o mouse
-    },
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: '#fff', // Cor do texto selecionado
-  }),
-  menu: (provided) => ({
-    ...provided,
-    backgroundColor: '#000', // Cor de fundo do menu
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isFocused ? '#333' : '#000', // Destaque nas opções ao focar
-    color: '#fff', // Cor do texto das opções
-    '&:active': {
-      backgroundColor: '#0288d1', // Fundo ao clicar
-    },
-  }),
-  placeholder: (provided) => ({
-    ...provided,
-    color: '#aaa', // Cor do placeholder
-  }),
-};
+const CURRENCIES = [
+  { value: 'BRL', label: 'BRL', symbol: 'R$' },
+  { value: 'USD', label: 'USD', symbol:  '$' },
+  { value: 'EUR', label: 'EUR', symbol:  '€' },
+];
 
 function Header() {
+  const { value, setValue } = useContext(MyContext);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const { setValue } = useContext(MyContext)
+  const selected = CURRENCIES.find((c) => c.value === value) || CURRENCIES[0];
+
+  // Fecha dropdown ao clicar fora
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
+    <header className="bg-header">
+      <div className="header-inner">
 
-    <div className="header bg-grey d-flex justify-content-between text-white text-center">
+        {/* ---- Logo ---- */}
+        <Link to="/" className="logo-link">
+          <div className="logo-wordmark">
+            <span className="logo-name">
+              <span className="logo-symbol">₿</span>itGraph
+            </span>
+          </div>
+        </Link>
 
-      <div className=' d-flex justify-content-center align-items-center'>
-        <Side />
+        {/* ---- Actions ---- */}
+        <div className="header-actions">
+
+          {/* Currency selector */}
+          <div style={{ position: 'relative' }} ref={dropdownRef}>
+            <button
+              id="currency-toggle-btn"
+              className="currency-btn"
+              type="button"
+              onClick={() => setDropdownOpen((o) => !o)}
+              aria-haspopup="listbox"
+              aria-expanded={dropdownOpen}
+            >
+              <span className="curr-symbol">{selected.symbol}</span>
+              <span style={{ fontWeight: 500, color: '#d4d4d4' }}>{selected.label}</span>
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{
+                  marginLeft: 2,
+                  color: '#737373',
+                  transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0)',
+                  transition: 'transform 0.2s ease',
+                }}
+              >
+                <path d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {dropdownOpen && (
+              <div className="currency-dropdown" role="listbox">
+                {CURRENCIES.map((cur) => (
+                  <button
+                    key={cur.value}
+                    className={`currency-dropdown-item${value === cur.value ? ' active' : ''}`}
+                    role="option"
+                    aria-selected={value === cur.value}
+                    onClick={() => {
+                      setValue(cur.value);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    <span style={{ color: '#737373', minWidth: 20 }}>{cur.symbol}</span>
+                    <span>{cur.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Menu button */}
+          <Side />
+        </div>
       </div>
-
-      <div>
-        <h1>₿itGraph</h1>
-        <span>Valores das criptomoedas em tempo real</span>
-      </div>
-
-      <div className=' d-flex justify-content-center align-items-center text-center'>
-        <Select
-          options={options}
-          styles={customStyles}
-          onChange={(selectedOption) => setValue(selectedOption.value)}
-          placeholder="Selecione..."
-          defaultValue={options[0]}
-        />
-      </div>
-
-    </div>
-  )
+    </header>
+  );
 }
-export default Header
+
+export default Header;

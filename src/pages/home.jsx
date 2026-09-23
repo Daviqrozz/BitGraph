@@ -3,49 +3,64 @@ import Header from '../components/cabeçalho/header';
 import TopCryptoList from '../components/cryptolist/topcryptolist';
 import { Link } from 'react-router-dom';
 
+const FRASES = [
+  'Esteja por dentro das novas tendências',
+  'Acompanhe o mercado em tempo real',
+];
+
 function Home() {
-  const frases = ['Esteja por dentro das novas tendencias', 'Acompanhe o mercado'];
   const [indexFrase, setIndexFrase] = useState(0);
-  const [visivel, setVisivel] = useState(true); 
+  const [visivel, setVisivel] = useState(true);
 
   useEffect(() => {
     const intervalo = setInterval(() => {
       setVisivel(false);
       setTimeout(() => {
-        setIndexFrase((prevIndex) => (prevIndex + 1) % frases.length);
+        setIndexFrase((prev) => (prev + 1) % FRASES.length);
         setVisivel(true);
-      }, 900);
+      }, 500);
     }, 4000);
 
     return () => clearInterval(intervalo);
   }, []);
 
   return (
-    <div>
+    <div className="page-wrapper">
       <Header />
-      <div className="bg-black text-white vh-100 d-flex flex-column justify-content-center align-items-center"> 
-        <h1 className={`text text-center ${visivel ? 'fade-in' : 'fade-out'}`}>
-          {frases[indexFrase]}
-        </h1>
+
+      {/* Hero */}
+      <main className="hero-section">
+        {/* Headline */}
+        <div className="hero-headline">
+          <h1 className={visivel ? 'fade-in' : 'fade-out'}>
+            {FRASES[indexFrase]}
+          </h1>
+        </div>
+
+        {/* Crypto price card */}
         <TopCryptoList />
-        <Link to="/principal" className="btn btn-primary mt-3">
+
+        {/* CTA */}
+        <Link to="/principal" className="btn-primary">
           Acompanhe o mercado
         </Link>
-      </div>
+      </main>
 
-    
-      <style>
-        {`
-          .fade-in {
-            opacity: 1;
-            transition: opacity 0.5s ease-in;
-          }
-          .fade-out {
-            opacity: 0;
-            transition: opacity 0.5s ease-out;
-          }
-        `}
-      </style>
+      {/* Footer */}
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <strong>₿itGraph</strong>
+            <span>—</span>
+            <span>Valores em tempo real</span>
+          </div>
+          <div className="footer-links">
+            <a href="#">Termos</a>
+            <a href="#">Privacidade</a>
+            <span>© {new Date().getFullYear()}</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

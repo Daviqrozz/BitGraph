@@ -1,14 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BitGraph</title>
+    <title>BitGraph | Valores das Criptomoedas em Tempo Real</title>
+    <meta name="description" content="Acompanhe os valores das criptomoedas em tempo real. Bitcoin, Ethereum, BNB, Cardano e muito mais." />
+
+    <!-- Favicon: Bitcoin symbol -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>₿</text></svg>" />
+
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Inter + JetBrains Mono -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      html, body { background-color: #000; margin: 0; padding: 0; }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <div id="footer"></div>
   </body>
 </html>

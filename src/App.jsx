@@ -3,7 +3,7 @@ import Home from './pages/home';
 import Chart from './pages/chart';
 import Coins from './pages/coins';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {

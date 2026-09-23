@@ -1,47 +1,102 @@
-import { useState } from 'react';
-import Valor from '../valor/valor';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../../hooks/Context';
+import { useCombinedCryptoPrices } from '../../hooks/useCombinedCryptoPrices';
+import { formatarPreco } from '../../hooks/useCryptoPrice';
+
+// Lista estática de criptomoedas da home — definida fora do componente para referência estável
+const CRYPTOS = [
+  {
+    id: 0,
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    href: '/chart/BTC',
+    image: 'criptomoeda.png',
+    iconColor: '#f7931a',
+  },
+  {
+    id: 1,
+    name: 'Ethereum',
+    symbol: 'ETH',
+    href: '/chart/ETH',
+    image: 'ethereum.png',
+    iconColor: '#3b82f6',
+  },
+  {
+    id: 2,
+    name: 'BNB',
+    symbol: 'BNB',
+    href: '/chart/BNB',
+    image: 'bnb.png',
+    iconColor: '#f3ba2f',
+  },
+  {
+    id: 3,
+    name: 'Cardano',
+    symbol: 'ADA',
+    href: '/chart/ADA',
+    image: 'cardano.png',
+    iconColor: '#3b5998',
+  },
+];
+
+// Array de símbolos estável
+const SYMBOLS = CRYPTOS.map((c) => c.symbol);
 
 export default function TopCryptoList() {
-    const [cryptos] = useState([
-        { id: 0, name: 'Bitcoin', image: 'criptomoeda.png', symbol: 'BTC', href: '/chart/BTC' },
-        { id: 1, name: 'Ethereum', image: 'ethereum.png', symbol: 'ETH', href: '/chart/ETH' },
-        { id: 2, name: 'BNB', image: 'bnb.png', symbol: 'BNB', href: '/chart/BNB' },
-        { id: 3, name: 'Cardano', image: 'cardano.png', symbol: 'ADA', href: '/chart/ADA' },
-    ]);
+  const { value } = useContext(MyContext);
 
-    return (
-        <div className="card flex md:justify-content-center " style={{ width: '100%', maxWidth: '30%' }}>
-            <ul
-                className="bg-dark text-white m-0 p-0 list-unstyled border-1 surface-border border-round p-3 flex flex-column gap-3 w-full"
-                style={{ width: '100%', maxWidth: '1000px' }}
+  // 1 único WebSocket combinado para todos os símbolos
+  const { prices, erro, carregando } = useCombinedCryptoPrices(SYMBOLS, value);
+
+  const moeda = value === 'BRL' ? 'R$' : value === 'EUR' ? '€' : '$';
+
+  return (
+    <div className="crypto-card">
+      <ul className="crypto-list">
+        {CRYPTOS.map((crypto) => {
+          const preco = prices[crypto.symbol];
+
+          return (
+            <Link
+              to={crypto.href}
+              key={crypto.id}
+              className="crypto-item"
+              aria-label={`Ver gráfico de ${crypto.name}`}
             >
-                {cryptos.map((crypto) => (
-                    <Link to={crypto.href} key={crypto.id} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <li
-                            className="p-3 hover:surface-hover border-round border-1 border-transparent transition-all transition-duration-200 flex align-items-center justify-content-between w-full"
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                width: '100%',
-                            }}
-                        >
-                            <div className="flex align-items-center gap-3" style={{ justifyContent: 'flex-start' }}>
-                                <img
-                                    alt={crypto.name}
-                                    src={`/CryptoIcons/${crypto.image}`}
-                                    style={{ width: '32px', height: '32px' }}
-                                />
-                                <span className="font-bold">{crypto.name}</span>
-                            </div>
-                            <span className="font-bold" style={{ justifySelf: 'flex-end' }}>
-                                <Valor symbol={crypto.symbol} />
-                            </span>
-                        </li>
-                    </Link>
-                ))}
-            </ul>
-        </div>
-    );
+              {/* Left: icon + name */}
+              <div className="crypto-item-left">
+                <div
+                  className="crypto-icon"
+                  style={{ backgroundColor: crypto.iconColor }}
+                >
+                  <img
+                    alt={crypto.name}
+                    src={`/CryptoIcons/${crypto.image}`}
+                  />
+                </div>
+                <span className="crypto-name">{crypto.name}</span>
+              </div>
+
+              {/* Right: price */}
+              <div className="crypto-price">
+                {preco !== undefined ? (
+                  <span>
+                    {moeda}
+                    {formatarPreco(preco)}
+                  </span>
+                ) : erro ? (
+                  <span className="crypto-price-error" title={erro}>
+                    N/D
+                  </span>
+                ) : (
+                  <span className="crypto-spinner" aria-label="Carregando preço" />
+                )}
+              </div>
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
