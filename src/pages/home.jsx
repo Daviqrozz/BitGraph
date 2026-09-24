@@ -41,7 +41,7 @@ function Home() {
         <TopCryptoList />
 
         {/* CTA */}
-        <Link to="/principal" className="btn-primary">
+        <Link to="/moedas" className="btn-primary">
           Acompanhe o mercado
         </Link>
       </main>

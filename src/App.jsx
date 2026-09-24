@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/principal" element={<Coins />} />
+        <Route path="/moedas" element={<Coins />} />
         <Route path="/chart/:symbol" element={<Chart />} />
       </Routes>
     </Router>

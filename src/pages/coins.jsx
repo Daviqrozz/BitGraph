@@ -1,4 +1,4 @@
-import Cryptolist from '../components/cryptolist/cryptolist';
+import CryptoList from '../components/cryptolist/cryptolist';
 import Header from '../components/cabeçalho/header';
 
 function Coin() {
@@ -6,7 +6,7 @@ function Coin() {
     <div className="page-wrapper">
       <Header />
       <div className="coins-page">
-        <Cryptolist />
+        <CryptoList />
       </div>
     </div>
   );
