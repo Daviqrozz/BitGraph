@@ -71,7 +71,7 @@ export default function Side() {
           <div className="sidebar-panel">
             {/* Header */}
             <div className="sidebar-header">
-              <span className="sidebar-title">Navegação</span>
+              <span className="sidebar-title">Menu</span>
               <button
                 className="sidebar-close"
                 aria-label="Fechar menu"
