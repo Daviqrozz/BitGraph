@@ -23,15 +23,15 @@ const NAV_ITEMS = [
     ),
   },
   {
-    path: '/contact',
-    label: 'Em breve',
+    path: '/sobre',
+    label: 'Sobre',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="16" x2="12" y2="12" />
+        <line x1="12" y1="8" x2="12.01" y2="8" />
       </svg>
     ),
-    disabled: true,
   },
 ];
 

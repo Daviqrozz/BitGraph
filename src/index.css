@@ -618,27 +618,221 @@ a {
 
 .footer-links a:hover { color: var(--color-text-secondary); }
 
-/* ============ Chart / Coins Page ============ */
-.chart-page {
+/* ============ Chart Page (/chart/:symbol) ============ */
+.chart-view-layout {
   flex: 1;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
+  gap: 20px;
+  animation: fadeIn 0.3s ease-out;
 }
 
-.chart-subtitle {
-  text-align: center;
+@media (max-width: 640px) {
+  .chart-view-layout {
+    padding: 20px 16px 48px;
+    gap: 16px;
+  }
+}
+
+/* Top bar */
+.chart-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chart-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
-  padding: var(--space-3) 0;
-  letter-spacing: 0.02em;
+  color: #a1a1aa; /* zinc-400 */
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.15s ease;
 }
 
-.tradingview-widget-container {
-  margin: var(--space-4) auto;
-  width: 90%;
-  max-width: 960px;
+.chart-back-btn:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateX(-2px);
+}
+
+.chart-back-arrow {
+  font-size: 0.875rem;
+  transition: transform 0.15s ease;
+}
+
+.chart-back-btn:hover .chart-back-arrow {
+  transform: translateX(-2px);
+}
+
+.chart-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #71717a; /* zinc-500 */
+}
+
+.chart-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #34d399; /* emerald-400 */
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Switcher pills */
+.chart-switcher-container {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chart-switcher-container::-webkit-scrollbar {
+  display: none;
+}
+
+.chart-switcher-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: max-content;
+  padding: 2px 0;
+}
+
+.chart-switcher-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa; /* zinc-400 */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.chart-switcher-pill:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.chart-switcher-pill--active {
+  background-color: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+.chart-switcher-icon {
+  font-size: 0.8125rem;
+  line-height: 1;
+}
+
+/* Main Card Container */
+.chart-card-container {
+  width: 100%;
+  background-color: rgb(19, 20, 24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.01);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.chart-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chart-card-names {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chart-card-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.chart-card-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chart-card-symbol {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #71717a; /* zinc-500 */
+}
+
+.chart-card-pair {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #a1a1aa; /* zinc-400 */
+}
+
+.chart-card-body {
+  width: 100%;
+  background-color: rgb(19, 20, 24);
+  min-height: 600px;
+}
+
+.chart-card-body .tradingview-widget-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.chart-card-body iframe {
+  width: 100% !important;
+  border: none !important;
+  display: block;
 }
 
 /* ============ Coins Page ============ */
@@ -1146,4 +1340,196 @@ a {
   color: var(--color-error);
   opacity: 0.7;
 }
+
+/* ============================================================
+   About Page (/sobre) — Minimalist Aesthetic
+   ============================================================ */
+.about-page {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 16px 80px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.about-container {
+  background-color: rgb(19, 20, 24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 48px 36px;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 640px) {
+  .about-container {
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+}
+
+/* Badge */
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #a1a1aa; /* zinc-400 */
+  letter-spacing: 0.02em;
+}
+
+.about-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #34d399; /* emerald-400 */
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+}
+
+/* Title */
+.about-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .about-title {
+    font-size: 2.75rem;
+  }
+}
+
+.about-title-highlight {
+  background: linear-gradient(135deg, #a1a1aa 0%, #71717a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Manifesto */
+.about-manifesto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-lead {
+  font-size: 1.125rem;
+  color: #f4f4f5; /* zinc-100 */
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-lead strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.about-text {
+  font-size: 0.9375rem;
+  color: #a1a1aa; /* zinc-400 */
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Grid of pillars */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.about-card:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.about-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.about-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.about-card-desc {
+  font-size: 0.8125rem;
+  color: #71717a; /* zinc-500 */
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Actions */
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.about-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d4d4d8; /* zinc-300 */
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.about-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
 
