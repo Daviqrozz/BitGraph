@@ -10,8 +10,8 @@ import api, { connectWebSocket, getQuoteAsset } from '../components/valor/api';
 export const formatarPreco = (preco) => {
   if (preco === null || preco === undefined) return '-';
   let decimals;
-  if (preco >= 10000) decimals = 2;
-  else if (preco >= 1) decimals = 2;
+  if (preco >= 1) decimals = 2;
+  else if (preco >= 0.01) decimals = 4;
   else decimals = 6;
 
   return new Intl.NumberFormat('pt-BR', {

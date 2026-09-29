@@ -98,12 +98,13 @@ export const connectWebSocket = (symbol, currency, onMessage, onError) => {
  * @param {string} currency - Ex: 'USD', 'BRL', 'EUR'
  * @param {(stream: string, data: object) => void} onMessage - Callback com nome do stream e dados
  * @param {(error: Event) => void} [onError]
+ * @param {string} [streamType='ticker'] - Tipo de stream: 'ticker' (1s com preço e variação 24h) ou 'trade'
  * @returns {{ close: () => void }}
  */
-export const connectCombinedStream = (symbols, currency, onMessage, onError) => {
+export const connectCombinedStream = (symbols, currency, onMessage, onError, streamType = 'ticker') => {
   const exchange = getExchange(currency);
   const streams = symbols
-    .map((s) => `${s.toLowerCase()}${exchange}@trade`)
+    .map((s) => `${s.toLowerCase()}${exchange}@${streamType}`)
     .join('/');
 
   let ws = null;

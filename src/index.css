@@ -905,6 +905,42 @@ a {
   color: #52525b;  /* zinc-600 */
 }
 
+.coins-rank-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.coins-fav-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #3f3f46;  /* zinc-700 */
+  font-size: 0.8125rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+.coins-row:hover .coins-fav-btn {
+  color: #71717a;  /* zinc-500 */
+}
+
+.coins-fav-btn:hover {
+  color: #facc15 !important;  /* amber-400 */
+  transform: scale(1.2);
+}
+
+.coins-fav-btn--active {
+  color: #facc15 !important;
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.35);
+}
+
 /* Asset cell */
 .coins-td--asset { padding: 16px 16px; }
 
@@ -916,25 +952,24 @@ a {
   color: inherit;
 }
 
-/* Icon — neutral style (matches Stitch: bg-white/[0.04] border-white/10 text-zinc-300) */
+/* Icon — colored badge style */
 .coins-asset-icon {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 9999px;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #d4d4d8;           /* zinc-300 */
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
   font-family: var(--font-mono);
   flex-shrink: 0;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .coins-row:hover .coins-asset-icon {
-  transform: scale(1.08);
+  transform: scale(1.12);
 }
 
 .coins-asset-names {
